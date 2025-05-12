@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Eventing.Reader;
 
-namespace Events.Api.Models
+namespace Events.DataLayer.Models
 {
-    public class CalendarEvent
+    public class CalendarEvent : IDatabaseModel
     {
         [Key]
         public int Id { get; set; }

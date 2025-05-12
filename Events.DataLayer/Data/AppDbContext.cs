@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Events.Api.Models;
+﻿using Events.DataLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Events.Api.Data
+namespace Events.DataLayer.Data
 {
     public class AppDbContext : DbContext
     {
