@@ -10,10 +10,7 @@ export default function ThemeModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="h-full titlebar-button focus-visible:ring-0 
-      bg-transparent hover:bg-transparent border-0 
-      hover:brightness-150 hover:shadow-none hover:border-0 
-      duration-500 ease-in-out transition-all"
+      className="titlebar-button h-full border-0 bg-transparent transition-all duration-500 ease-in-out hover:border-0 hover:bg-transparent hover:shadow-none hover:brightness-150 focus-visible:ring-0"
       onClick={() => {
         const colors = [
           "zing",
@@ -36,14 +33,8 @@ export default function ThemeModeToggle() {
         });
       }}
     >
-      <Sun
-        className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all text-foreground
-        dark:-rotate-90 dark:scale-0"
-      />
-      <Moon
-        className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition all dark:rotate-0
-        dark:scale-100 text-foreground"
-      />
+      <Sun className="text-foreground h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+      <Moon className="all text-foreground absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition dark:scale-100 dark:rotate-0" />
 
       <span className="sr-only">Toggle Theme</span>
     </Button>
