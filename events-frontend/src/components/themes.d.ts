@@ -1,27 +1,27 @@
 type ThemeColors =
-| 'zinc'
-| 'rose'
-| 'blue'
-| 'green'
-| 'orange'
-| 'red'
-| 'yellow'
-| 'violet'
+    | 'zinc'
+    | 'rose'
+    | 'blue'
+    | 'green'
+    | 'orange'
+    | 'red'
+    | 'yellow'
+    | 'violet'
 
 type ThemeMode = 'dark' | 'light' | 'system';
 
-type Theme = {
-    mode: ThemeMode,
-    color: ThemeColors
+interface Theme {
+    mode: ThemeMode;
+    color: ThemeColors;
 }
 
-type ThemeProviderProps = {
+interface ThemeProviderProps {
     children: React.ReactNode;
     defaultTheme?: Theme;
     storageKey?: string;
 }
 
-type ThemeProviderState = {
+interface ThemeProviderState {
     theme: Theme;
     setTheme: (theme: Theme) => void;
 }

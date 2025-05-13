@@ -1,4 +1,3 @@
-import { store } from "@/store";
 import { createContext, useContext, useState } from "react";
 
 const initialState: ThemeProviderState = {
@@ -10,7 +9,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = { mode: "dark", color: "yellow" },
+  defaultTheme = { mode: "light", color: "yellow" },
   ...props
 }: ThemeProviderProps) {
   const [storedTheme, setStoredTheme] = useState<Theme>(defaultTheme);
