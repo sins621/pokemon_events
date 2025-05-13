@@ -11,6 +11,7 @@ namespace Events.Api.Controllers
     public class CalendarEventsController : ControllerBase
     {
         private readonly IGenericRepository<CalendarEvent>  _calendarRepo;
+        private readonly IGenericRepository<CalendarEvent>  _quotes;
 
         public CalendarEventsController(IGenericRepository<CalendarEvent> calendarRepo)
         {
