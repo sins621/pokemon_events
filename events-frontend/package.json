@@ -13,10 +13,12 @@
     "@reduxjs/toolkit": "^2.8.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.13",
     "lucide-react": "^0.510.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
     "sass": "^1.88.0",
     "tailwind-merge": "^3.3.0"
@@ -29,6 +31,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.2.9",
     "typescript": "^5"
