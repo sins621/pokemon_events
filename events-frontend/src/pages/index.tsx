@@ -1,5 +1,5 @@
-import { useGetEventsQuery } from '@/store/api';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useGetEventsQuery } from "@/store/api";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Home() {
   const { data, error, isLoading } = useGetEventsQuery();
@@ -18,10 +18,17 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600">
-                {new Date(event.start).toLocaleString()} → {new Date(event.end).toLocaleString()}
+                {new Date(event.start).toLocaleString()} →{" "}
+                {new Date(event.end).toLocaleString()}
               </p>
-              {event.location && <p className="mt-2 text-sm">📍 {event.location}</p>}
-              {event.description && <p className="mt-2 text-sm text-muted-foreground">{event.description}</p>}
+              {event.location && (
+                <p className="mt-2 text-sm">📍 {event.location}</p>
+              )}
+              {event.description && (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {event.description}
+                </p>
+              )}
             </CardContent>
           </Card>
         ))}
