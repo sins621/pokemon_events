@@ -11,7 +11,7 @@ const HeaderRight: React.FC = () => {
   return (
     <div className="flex items-center space-x-4">
       <Select>
-        <SelectTrigger className="w-24 focus-visible:outline-none">
+        <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
           <SelectValue placeholder="Month" />
         </SelectTrigger>
         <SelectContent>
@@ -22,7 +22,7 @@ const HeaderRight: React.FC = () => {
       </Select>
 
       <Avatar>
-        <AvatarImage src="https://picsum.photos/300/300"/>
+        <AvatarImage src="https://picsum.photos/300/300" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
     </div>
