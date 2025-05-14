@@ -1,16 +1,16 @@
 import { getMonth } from "@/lib/getTime";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
+import MonthViewBox from "./MonthViewBox";
 
 const MonthView: React.FC = () => {
-  const currentMonth = getMonth();
-  console.table(currentMonth);
+  const currentMonth = useMemo(() => getMonth(), []);
 
   return (
     <section className="grid grid-cols-7 grid-rows-5 lg:h-[100vh]">
       {currentMonth.map((row, i) => (
         <Fragment key={i}>
           {row.map((day, j) => (
-            <h3 key={j}>{day.format("D")}</h3>
+            <MonthViewBox key={j} day={day} rowIndex={i} />
           ))}
         </Fragment>
       ))}
