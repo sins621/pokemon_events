@@ -3,27 +3,30 @@ import dayjs, { Dayjs } from "dayjs";
 import { getMonth } from "../lib/getTime";
 
 interface DataStoreType {
-  userSelectedDate: Dayjs;
-  twoDMonthArray: Dayjs[][];
+  userSelectedDate: string;
+  twoDMonthArray: string[][];
   selectedMonthIndex: number;
 }
 
+const getMonthAsISO = (month = dayjs().month()): string[][] =>
+  getMonth(month).map((week) => week.map((day) => day.toISOString()));
+
 const initialState: DataStoreType = {
-  userSelectedDate: dayjs(),
+  userSelectedDate: dayjs().toISOString(),
   selectedMonthIndex: dayjs().month(),
-  twoDMonthArray: getMonth(),
+  twoDMonthArray: getMonthAsISO(),
 };
 
 const calendarDataSlice = createSlice({
   name: "calendarData",
   initialState,
   reducers: {
-    setDate(state, action: PayloadAction<Dayjs>) {
+    setDate(state, action: PayloadAction<string>) {
       state.userSelectedDate = action.payload;
     },
     setMonth(state, action: PayloadAction<number>) {
       state.selectedMonthIndex = action.payload;
-      state.twoDMonthArray = getMonth(action.payload);
+      state.twoDMonthArray = getMonthAsISO(action.payload);
     },
   },
 });
