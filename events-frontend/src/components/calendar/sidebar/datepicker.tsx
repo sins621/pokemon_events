@@ -1,7 +1,5 @@
 const DatePicker: React.FC = () => {
-  return (
-    
-  );
+  return <div></div>;
 };
 
 export default DatePicker;
