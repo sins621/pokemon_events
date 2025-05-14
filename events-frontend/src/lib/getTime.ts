@@ -29,4 +29,6 @@ export const getWeekDays = (date: dayjs.Dayjs) => {
       isCurrentDay,
     });
   }
+
+  return weekDates;
 };
