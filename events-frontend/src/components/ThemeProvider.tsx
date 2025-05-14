@@ -9,7 +9,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = { mode: "light", color: "yellow" },
+  defaultTheme = { mode: "light", color: "violet" },
   ...props
 }: ThemeProviderProps) {
   const [storedTheme, setStoredTheme] = useState<Theme>(defaultTheme);
