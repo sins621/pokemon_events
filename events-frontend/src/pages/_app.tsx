@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="bg-background text-foreground min-h-screen">
           <Header />
           <Component {...pageProps} />
         </div>
