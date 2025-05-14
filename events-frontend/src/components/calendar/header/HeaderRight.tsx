@@ -6,11 +6,15 @@ import {
   SelectValue,
   SelectContent,
 } from "@/components/ui/select";
+import { useDispatch } from "react-redux";
+import { setView } from "@/store/calendarViewSlice";
 
 const HeaderRight: React.FC = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="flex items-center space-x-4">
-      <Select>
+      <Select onValueChange={(day) => dispatch(setView(day))}>
         <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
           <SelectValue placeholder="Month" />
         </SelectTrigger>
