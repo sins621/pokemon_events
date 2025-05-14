@@ -1,5 +1,5 @@
 import Sidebar from "../calendar/sidebar/Sidebar";
-import MonthView from "./month-view";
+import MonthView from "../calendar/month-view/month-view";
 
 const MainView: React.FC = () => {
   return (
