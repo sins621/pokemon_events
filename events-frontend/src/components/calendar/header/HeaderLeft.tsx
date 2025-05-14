@@ -10,7 +10,7 @@ const HeaderLeft: React.FC = () => {
           <Menu className="size-6" />
         </Button>
       </div>
-      <Button variant="outline">Today</Button>
+      <Button>Today</Button>
 
       <div className="flex items-center gap-3">
         <MdKeyboardArrowLeft
