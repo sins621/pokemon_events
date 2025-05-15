@@ -35,6 +35,7 @@ const WeekView: React.FC = () => {
             <div className={cn("text-xs", today && "text-blue-600")}>
               {currentDate.format("ddd")}
             </div>
+            <div className="flex text-blue-200"></div>
 
             <div
               className={cn(
