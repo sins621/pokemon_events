@@ -32,3 +32,7 @@ export const getWeekDays = (date: dayjs.Dayjs) => {
 
   return weekDates;
 };
+
+export const getHours = Array.from({ length: 24 }, (_, i) =>
+  dayjs().startOf("day").add(i, "hour"),
+);
