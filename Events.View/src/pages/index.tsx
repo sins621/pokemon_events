@@ -12,7 +12,6 @@ export default function Home() {
   );
   const [twoDMonthArray, setTwoDMonthArray] = useState<string[][]>([]);
 
-  // On initial load, set selectedMonthIndex from URL
   useEffect(() => {
     if (router.isReady) {
       const monthFromQuery = Number(router.query.month);
@@ -23,7 +22,6 @@ export default function Home() {
     }
   }, [router.isReady, router.query.month]);
 
-  // When selectedMonthIndex updates, update the calendar and the URL
   useEffect(() => {
     if (selectedMonthIndex !== null) {
       setTwoDMonthArray(getMonthAsISO(selectedMonthIndex));
@@ -38,7 +36,7 @@ export default function Home() {
     }
   }, [selectedMonthIndex]);
 
-  if (selectedMonthIndex === null) return null; // Avoid rendering before state is set
+  if (selectedMonthIndex === null) return null;
 
   return (
     <div>
