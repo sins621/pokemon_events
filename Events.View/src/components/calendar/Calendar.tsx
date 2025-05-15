@@ -4,9 +4,6 @@ import { RootState } from "@/store";
 import MonthView from "@/components/calendar/month-view/MonthView";
 import WeekView from "@/components/calendar/week-view/WeekView";
 import DayView from "@/components/calendar/day-view/DayView";
-import { useState } from "react";
-import { getMonthAsISO } from "@/store/calendarDataSlice";
-import dayjs from "dayjs";
 
 interface CalendarProps {
   daysOfMonth: string[][];
