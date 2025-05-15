@@ -8,7 +8,7 @@ interface DataStoreType {
   selectedMonthIndex: number;
 }
 
-const getMonthAsISO = (month = dayjs().month()): string[][] =>
+export const getMonthAsISO = (month = dayjs().month()): string[][] =>
   getMonth(month).map((week) => week.map((day) => day.toISOString()));
 
 const initialState: DataStoreType = {

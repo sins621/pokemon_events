@@ -1,4 +1,4 @@
-import { getHours } from "@/lib/getTime";
+import { getHours, isCurrentDay } from "@/lib/getTime";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { RootState } from "@/store";
@@ -41,9 +41,11 @@ const DayView: React.FC = () => {
           </div>
         </div>
       </div>
+
       <ScrollArea className="h-[70vh]">
         <div className="grid grid-cols-[auto_1fr] p-4">
-          <div className="w-16 border-r border-gray-300">
+          {/* Left Column: Time Labels with RIGHT border only */}
+          <div className="w-16 border-r border-gray-300 pr-2">
             {getHours.map((hour, index) => (
               <div key={index} className="relative h-16">
                 <div className="absolute -top-2 text-xs text-gray-600">
@@ -52,11 +54,26 @@ const DayView: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* Right Column: Time Blocks with BOTTOM borders (grid lines) */}
+          <div className="relative">
+            {getHours.map((_, i) => (
+              <div
+                key={i}
+                className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-gray-100"
+              />
+            ))}
+
+            {isCurrentDay(userSelectedDate) && (
+              <div
+                className="absolute h-0.5 w-full bg-red-500"
+                style={{
+                  top: `${((currentTime.hour() * 60 + currentTime.minute()) / (24 * 60)) * 100}%`,
+                }}
+              />
+            )}
+          </div>
         </div>
-
-        {/* Day/Boxes Column */}
-
-        <div className="relative border-r border-gray-300"></div>
       </ScrollArea>
     </>
   );
