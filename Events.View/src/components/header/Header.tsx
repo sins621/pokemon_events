@@ -1,5 +1,5 @@
-import HeaderLeft from "./HeaderLeft";
-import HeaderRight from "./HeaderRight";
+import HeaderLeft from "@/components/header/header-left/HeaderLeft";
+import HeaderRight from "@/components/header/header-right/HeaderRight";
 
 const Header: React.FC = () => {
   return (

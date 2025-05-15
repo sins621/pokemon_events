@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import Create from "./create";
-import SideBarCalendar from "./side-bar-calendar";
+import Create from "@/components/sidebar/create/Create";
+import SideBarCalendar from "@/components/sidebar/sidebar-calendar/SideBarCalendar";
 
 const Sidebar: React.FC = () => {
   return (

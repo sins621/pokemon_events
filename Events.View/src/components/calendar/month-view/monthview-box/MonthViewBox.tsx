@@ -20,7 +20,7 @@ const MonthViewBox: React.FC<MonthViewBoxProps> = ({ day, rowIndex }) => {
   return (
     <div
       className={cn(
-        "group relative flex flex-col items-center gap-y-2 border",
+        "group relative flex flex-col items-center gap-y-2",
         "hover:bg-voilet-50 transition-all",
       )}
     >
