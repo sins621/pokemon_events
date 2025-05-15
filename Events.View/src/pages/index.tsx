@@ -40,7 +40,6 @@ export default function Home() {
 
   return (
     <div>
-      {JSON.stringify(selectedMonthIndex)}
       <Header
         selectedMonth={selectedMonthIndex}
         setSelectedMonth={setSelectedMonthIndex}
