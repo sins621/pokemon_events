@@ -1,11 +1,17 @@
 import HeaderLeft from "@/components/header/header-left/HeaderLeft";
 import HeaderRight from "@/components/header/header-right/HeaderRight";
 import { Dispatch, SetStateAction } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface HeaderProps {
   selectedMonth: number;
-  setSelectedMonth: Dispatch<SetStateAction<number>>;
+  setSelectedMonth: Dispatch<SetStateAction<number | null>>;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -15,7 +21,10 @@ const Header: React.FC<HeaderProps> = (props) => {
       <HeaderLeft />
 
       <HeaderRight />
-      <Select defaultValue={selectedMonth.toString()} onValueChange={(month) => setSelectedMonth(Number(month))}>
+      <Select
+        defaultValue={selectedMonth.toString()}
+        onValueChange={(month) => setSelectedMonth(Number(month))}
+      >
         <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
           <SelectValue placeholder="Select Month" />
         </SelectTrigger>
