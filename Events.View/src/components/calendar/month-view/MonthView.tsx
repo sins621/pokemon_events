@@ -3,7 +3,6 @@ import MonthViewBox from "./monthview-box/MonthViewBox";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-import { cn } from "@/lib/utils";
 
 const MonthView: React.FC = () => {
   const twoDMonthArray = useSelector(
