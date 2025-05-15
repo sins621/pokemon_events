@@ -18,7 +18,7 @@ const HeaderRight: React.FC = () => {
         <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
           <SelectValue placeholder="Month" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="bg-white">
           <SelectItem value="month">Month</SelectItem>
           <SelectItem value="week">Week</SelectItem>
           <SelectItem value="day">Day</SelectItem>

@@ -3,6 +3,7 @@ import MonthViewBox from "./monthview-box/MonthViewBox";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
+import { cn } from "@/lib/utils";
 
 const MonthView: React.FC = () => {
   const twoDMonthArray = useSelector(
@@ -13,16 +14,16 @@ const MonthView: React.FC = () => {
   );
 
   return (
-    <section className="grid grid-cols-7 grid-rows-5 lg:h-[100vh]">
-        {parsedTwoDMonthArray.map((row, i) => (
-          <Fragment key={i}>
-            {row.map((day, j) => (
-              <div key={j} className="border-l">
-                <MonthViewBox key={j} day={day} rowIndex={i} />
-              </div>
-            ))}
-          </Fragment>
-        ))}
+    <section className="grid grid-cols-7 grid-rows-5 divide-x divide-y divide-gray-300 lg:h-[100vh]">
+      {parsedTwoDMonthArray.map((row, i) => (
+        <Fragment key={i}>
+          {row.map((day, j) => (
+            <div key={j}>
+              <MonthViewBox day={day} rowIndex={i} />
+            </div>
+          ))}
+        </Fragment>
+      ))}
     </section>
   );
 };
