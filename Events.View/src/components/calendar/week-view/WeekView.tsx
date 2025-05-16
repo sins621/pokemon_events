@@ -1,18 +1,15 @@
 import { getHours, getWeekDays } from "@/lib/getTime";
 import { cn } from "@/lib/utils";
-import { RootState } from "@/store";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
-const WeekView: React.FC = () => {
-  const userSelectedDate = dayjs(
-    useSelector((state: RootState) => state.calendarData.userSelectedDate),
-  );
+interface WeekViewProps {
+  selectedDate: Dayjs;
+}
 
-  const Days = getWeekDays(userSelectedDate);
-
+const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
+  const weekDays = getWeekDays(selectedDate.startOf("week"));
   const [currentTime, setCurrentTime] = useState(dayjs());
 
   useEffect(() => {
@@ -24,6 +21,7 @@ const WeekView: React.FC = () => {
 
   return (
     <>
+      {/* Header row with day names */}
       <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] place-items-center px-4 py-2">
         <div className="w-16 border-r border-gray-300">
           <div className="relative h-16">
@@ -31,9 +29,7 @@ const WeekView: React.FC = () => {
           </div>
         </div>
 
-        {/* Week View Header */}
-
-        {getWeekDays(userSelectedDate).map(({ currentDate, today }, index) => (
+        {weekDays.map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
             <div className={cn("text-xs", today && "text-blue-600")}>
               {currentDate.format("ddd")}
@@ -41,20 +37,19 @@ const WeekView: React.FC = () => {
             <div
               className={cn(
                 "h-12 w-12 rounded-full p-2 text-2xl",
-                today && "bg-blue-600 text-white",
+                today && "bg-slate-600 text-white",
               )}
             >
-              {currentDate.format("DD")}{" "}
+              {currentDate.format("DD")}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Time Column & Corresponding Boxes of time per each date  */}
-
+      {/* Time grid */}
       <ScrollArea className="h-[70vh]">
         <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] px-4 py-2">
-          {/* Time Column */}
+          {/* Time column */}
           <div className="w-16 border-r border-gray-300">
             {getHours.map((hour, index) => (
               <div key={index} className="relative h-16">
@@ -65,46 +60,31 @@ const WeekView: React.FC = () => {
             ))}
           </div>
 
-          {/* Week Days Corresponding Boxes */}
+          {/* Daily columns */}
+          {weekDays.map(({ currentDate, today }, index) => (
+            <div key={index} className="relative border-r border-gray-300">
+              {getHours.map((hour, i) => (
+                <div
+                  key={i}
+                  className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-accent"
+                  onClick={() => {
+                    // setDate(currentDate.hour(hour.hour()));
+                    // openPopover();
+                  }}
+                />
+              ))}
 
-          {getWeekDays(userSelectedDate).map(
-            ({ isCurrentDay, today }, index) => {
-              const dayDate = userSelectedDate
-                .startOf("week")
-                .add(index, "day");
-
-              return (
-                <div key={index} className="relative border-r border-gray-300">
-                  {getHours.map((hour, i) => (
-                    <div
-                      key={i}
-                      className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-gray-100"
-                      onClick={() => {
-                        // setDate(dayDate.hour(hour.hour()));
-                        // openPopover();
-                      }}
-                    >
-                      {/* <EventRenderer */}
-                      {/*   events={events} */}
-                      {/*   date={dayDate.hour(hour.hour())} */}
-                      {/*   view="week" */}
-                      {/* /> */}
-                    </div>
-                  ))}
-                  {/* Current time indicator */}
-
-                  {isCurrentDay(dayDate) && today && (
-                    <div
-                      className={cn("absolute h-0.5 w-full bg-red-500")}
-                      style={{
-                        top: `${(currentTime.hour() / 24) * 100}%`,
-                      }}
-                    />
-                  )}
-                </div>
-              );
-            },
-          )}
+              {/* Current time indicator */}
+              {currentDate.isSame(dayjs(), "day") && (
+                <div
+                  className="absolute h-0.5 w-full bg-red-500"
+                  style={{
+                    top: `${(currentTime.hour() / 24) * 100}%`,
+                  }}
+                />
+              )}
+            </div>
+          ))}
         </div>
       </ScrollArea>
     </>

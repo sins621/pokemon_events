@@ -9,20 +9,56 @@ import {
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { useDispatch } from "react-redux";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { setView } from "@/store/calendarViewSlice";
-import type { selectedDate } from "@/types/calendar";
+import dayjs, { Dayjs } from "dayjs";
 
 interface HeaderProps {
-  selectedMonth: number;
-  setSelectedDate: Dispatch<SetStateAction<selectedDate>>;
+  selectedDate: Dayjs;
+  setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
+  selectedView: string;
+  setSelectedView: Dispatch<SetStateAction<string>>;
 }
 
-const CalendarHeader: React.FC<HeaderProps> = (props) => {
-  const { selectedMonth, setSelectedDate } = props;
+const CalendarHeader: React.FC<HeaderProps> = ({
+  selectedDate,
+  setSelectedDate,
+  selectedView,
+  setSelectedView,
+}) => {
+  const handlePrev = () => {
+    if (selectedView === "month") {
+      setSelectedDate((prev) => prev.subtract(1, "month"));
+    } else if (selectedView === "week") {
+      setSelectedDate((prev) => prev.subtract(1, "week"));
+    } else {
+      setSelectedDate((prev) => prev.subtract(1, "day"));
+    }
+  };
 
-  const dispatch = useDispatch();
+  const handleNext = () => {
+    if (selectedView === "month") {
+      setSelectedDate((prev) => prev.add(1, "month"));
+    } else if (selectedView === "week") {
+      setSelectedDate((prev) => prev.add(1, "week"));
+    } else {
+      setSelectedDate((prev) => prev.add(1, "day"));
+    }
+  };
+
+  const resetToToday = () => {
+    setSelectedDate(dayjs());
+  };
+
+  let dateLabel = "";
+  if (selectedView === "month") {
+    dateLabel = selectedDate.format("MMMM YYYY");
+  } else if (selectedView === "week") {
+    const start = selectedDate.startOf("week").format("MMM D");
+    const end = selectedDate.endOf("week").format("MMM D, YYYY");
+    dateLabel = `${start} – ${end}`;
+  } else {
+    dateLabel = selectedDate.format("dddd, MMMM D, YYYY");
+  }
 
   return (
     <div className="mx-3 flex items-center justify-between py-4">
@@ -32,27 +68,33 @@ const CalendarHeader: React.FC<HeaderProps> = (props) => {
             <Menu className="size-6" />
           </Button>
         </div>
-        <Button variant={"outline"}>Today</Button>
+
+        <Button variant="outline" onClick={resetToToday}>
+          Today
+        </Button>
 
         <div className="flex items-center gap-3">
           <MdKeyboardArrowLeft
             className="size-6 cursor-pointer font-bold"
-            // onClick={handlePrevClick}
+            onClick={handlePrev}
           />
           <MdKeyboardArrowRight
             className="size-6 cursor-pointer font-bold"
-            // onClick={handlePrevClick}
+            onClick={handleNext}
           />
-          <h1 className="hidden text-xl lg:block">May 14 2025</h1>
+          <h1 className="hidden text-xl lg:block">{dateLabel}</h1>
         </div>
       </div>
 
       <div className="flex items-center space-x-4">
-        <Select onValueChange={(day) => dispatch(setView(day))}>
-          <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
-            <SelectValue placeholder="Month" />
+        <Select
+          onValueChange={(value) => setSelectedView(value)}
+          defaultValue={selectedView}
+        >
+          <SelectTrigger className="w-24 focus-visible:ring-0 focus-visible:ring-offset-0">
+            <SelectValue placeholder="View" />
           </SelectTrigger>
-          <SelectContent className="bg-white">
+          <SelectContent>
             <SelectItem value="month">Month</SelectItem>
             <SelectItem value="week">Week</SelectItem>
             <SelectItem value="day">Day</SelectItem>
@@ -64,27 +106,6 @@ const CalendarHeader: React.FC<HeaderProps> = (props) => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
-      <Select
-        defaultValue={selectedMonth.toString()}
-        onValueChange={(month) =>
-          setSelectedDate((prev) => ({
-            ...prev,
-            monthIndex: Number(month),
-          }))
-        }
-      >
-        <SelectTrigger className="focus-visible:ring-ring w-24 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
-          <SelectValue placeholder="Select Month" />
-        </SelectTrigger>
-        <SelectContent className="bg-white">
-          <SelectItem value="0">Januray</SelectItem>
-          <SelectItem value="1">Fewbruary</SelectItem>
-          <SelectItem value="2">March</SelectItem>
-          <SelectItem value="3">April</SelectItem>
-          <SelectItem value="4">May</SelectItem>
-          <SelectItem value="5">June</SelectItem>
-        </SelectContent>
-      </Select>
     </div>
   );
 };
