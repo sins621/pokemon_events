@@ -31,7 +31,7 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
         {weekDays.map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className={cn("text-xs", today && "text-blue-600")}>
+            <div className={cn("text-xs", today && "text-slate-600")}>
               {currentDate.format("ddd")}
             </div>
             <div

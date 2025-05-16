@@ -25,7 +25,7 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
       <div className="grid grid-cols-[auto_auto_1fr] px-4">
         <div className="w-16 border-r border-gray-300 text-xs">GMT +2</div>
         <div className="flex w-16 flex-col items-center">
-          <div className={cn("text-xs", isToday && "text-blue-600")}>
+          <div className={cn("text-xs", isToday && "text-slate-600")}>
             {selectedDate.format("ddd")}
           </div>
           <div
