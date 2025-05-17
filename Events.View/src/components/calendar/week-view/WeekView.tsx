@@ -31,13 +31,13 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
         {weekDays.map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className={cn("text-xs", today && "text-slate-600")}>
+            <div className={cn("text-xs", today && "text-accent")}>
               {currentDate.format("ddd")}
             </div>
             <div
               className={cn(
                 "h-12 w-12 rounded-full p-2 text-2xl",
-                today && "bg-slate-600 text-white",
+                today && "bg-accent text-white",
               )}
             >
               {currentDate.format("DD")}
