@@ -3,10 +3,10 @@ import WeekView from "@/components/calendar/week-view/WeekView";
 import DayView from "@/components/calendar/day-view/DayView";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getMonthAsISO } from "@/store/calendarDataSlice";
 import CalendarHeader from "./calendar-header/CalendarHeader";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import weekOfYear from "dayjs/plugin/weekOfYear";
+import { getMonth } from "@/lib/getTime";
 
 dayjs.extend(weekOfYear);
 
@@ -16,7 +16,7 @@ const Calendar: React.FC = () => {
   const [isDateInitialized, setIsDateInitialized] = useState(false);
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs>(dayjs());
   const [selectedView, setSelectedView] = useState<string>("month");
-  const [twoDMonthArray, setTwoDMonthArray] = useState<string[][]>([]);
+  const [twoDMonthArray, setTwoDMonthArray] = useState<Dayjs[][]>([]);
 
   useEffect(() => {
     if (!router.isReady || isDateInitialized) return;
@@ -29,7 +29,7 @@ const Calendar: React.FC = () => {
   useEffect(() => {
     if (!isDateInitialized) return;
 
-    setTwoDMonthArray(getMonthAsISO(selectedDate.month()));
+    setTwoDMonthArray(getMonth(selectedDate.month()));
 
     router.replace(
       {
