@@ -21,12 +21,11 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
   return (
     <>
-      {/* Header row with day names */}
       <div
         className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr]
           place-items-center px-4 py-2"
       >
-        <div className="w-16 border-r border-gray-300">
+        <div className="w-16 border-r">
           <div className="relative h-16">
             <div className="absolute top-2 text-xs text-gray-600">GMT +2</div>
           </div>
@@ -34,13 +33,13 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
         {weekDays.map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className={cn("text-xs", today && "text-custom-mint")}>
+            <div className={cn("text-xs", today && "text-secondary")}>
               {currentDate.format("ddd")}
             </div>
             <div
               className={cn(
                 "h-12 w-12 rounded-full p-2 text-2xl",
-                today && "bg-custom-mint text-white",
+                today && "bg-secondary text-white",
               )}
             >
               {currentDate.format("DD")}
@@ -49,14 +48,12 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
         ))}
       </div>
 
-      {/* Time grid */}
       <ScrollArea className="h-[70vh]">
         <div
           className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] px-4
             py-2"
         >
-          {/* Time column */}
-          <div className="w-16 border-r border-gray-300">
+          <div className="w-16 border-r">
             {getHours.map((hour, index) => (
               <div key={index} className="relative h-16">
                 <div className="absolute -top-2 text-xs text-gray-600">
@@ -66,23 +63,17 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
             ))}
           </div>
 
-          {/* Daily columns */}
-          {weekDays.map(({ currentDate, today }, index) => (
-            <div key={index} className="relative border-r border-gray-300">
-              {getHours.map((hour, i) => (
+          {weekDays.map(({ currentDate }, index) => (
+            <div key={index} className="relative border-r">
+              {getHours.map((_, i) => (
                 <div
                   key={i}
-                  className="hover:bg-custom-mint relative flex h-16
-                    cursor-pointer flex-col items-center gap-y-2 border-b
-                    border-gray-300"
-                  onClick={() => {
-                    // setDate(currentDate.hour(hour.hour()));
-                    // openPopover();
-                  }}
+                  className="hover:bg-accent relative flex h-16 cursor-pointer
+                    flex-col items-center gap-y-2 border-b"
+                  onClick={() => {}}
                 />
               ))}
 
-              {/* Current time indicator */}
               {currentDate.isSame(dayjs(), "day") && (
                 <div
                   className="absolute h-0.5 w-full bg-red-500"

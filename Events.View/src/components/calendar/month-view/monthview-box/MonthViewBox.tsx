@@ -34,7 +34,7 @@ const MonthViewBox: React.FC<MonthViewBoxProps> = ({ day, rowIndex }) => {
           className={cn(
             "text-center text-sm",
             isToday &&
-              `bg-custom-mint flex h-8 w-8 items-center justify-center
+              `bg-secondary flex h-8 w-8 items-center justify-center
               rounded-full text-white`,
           )}
         >

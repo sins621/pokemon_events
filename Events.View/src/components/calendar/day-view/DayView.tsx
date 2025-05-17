@@ -1,4 +1,4 @@
-import { getHours, isCurrentDay } from "@/lib/getTime";
+import { getHours } from "@/lib/getTime";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import dayjs, { Dayjs } from "dayjs";
@@ -23,15 +23,15 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
   return (
     <>
       <div className="grid grid-cols-[auto_auto_1fr] px-4">
-        <div className="w-16 border-r border-gray-300 text-xs">GMT +2</div>
+        <div className="w-16 border-r text-xs">GMT +2</div>
         <div className="flex w-16 flex-col items-center">
-          <div className={cn("text-xs", isToday && "text-custom-mint")}>
+          <div className={cn("text-xs", isToday && "text-secondary")}>
             {selectedDate.format("ddd")}
           </div>
           <div
             className={cn(
               "h-12 w-12 rounded-full p-2 text-2xl",
-              isToday && "bg-custom-mint text-white",
+              isToday && "bg-secondary text-white",
             )}
           >
             {selectedDate.format("DD")}
@@ -41,7 +41,7 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
 
       <ScrollArea className="h-[70vh]">
         <div className="grid grid-cols-[auto_1fr] p-4">
-          <div className="w-16 border-r border-gray-300 pr-2">
+          <div className="w-16 border-r pr-2">
             {getHours.map((hour, index) => (
               <div key={index} className="relative h-16">
                 <div className="absolute -top-2 text-xs text-gray-600">
@@ -55,9 +55,8 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
             {getHours.map((_, i) => (
               <div
                 key={i}
-                className="hover:bg-custom-mint relative flex h-16
-                  cursor-pointer flex-col items-center gap-y-2 border-b
-                  border-gray-300"
+                className="hover:bg-accent relative flex h-16
+                  cursor-pointer flex-col items-center gap-y-2 border-b"
               />
             ))}
 
