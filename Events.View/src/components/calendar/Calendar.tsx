@@ -13,21 +13,25 @@ dayjs.extend(weekOfYear);
 const Calendar: React.FC = () => {
   const router = useRouter();
 
-  const [isDateInitialized, setIsDateInitialized] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs>(dayjs());
-  const [selectedView, setSelectedView] = useState<string>("month");
+  const [isInitialized, setIsInitialized] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Dayjs>(dayjs());
+  const [selectedView, setSelectedView] = useState<CalendarViewType>("month");
   const [twoDMonthArray, setTwoDMonthArray] = useState<Dayjs[][]>([]);
 
   useEffect(() => {
-    if (!router.isReady || isDateInitialized) return;
+    if (!router.isReady || isInitialized) return;
 
     const dateFromQuery = dayjs(router.query.date as string);
+    const viewFromQuery = router.query.view as CalendarViewType;
+
     setSelectedDate(dateFromQuery.isValid() ? dateFromQuery : dayjs());
-    setIsDateInitialized(true);
-  }, [router.isReady, router.query.date, isDateInitialized]);
+    setSelectedView(viewFromQuery ?? "month");
+
+    setIsInitialized(true);
+  }, [router.isReady, router.query.date, router.query.view, isInitialized]);
 
   useEffect(() => {
-    if (!isDateInitialized) return;
+    if (!isInitialized) return;
 
     setTwoDMonthArray(getMonth(selectedDate.month()));
 
@@ -37,14 +41,15 @@ const Calendar: React.FC = () => {
         query: {
           ...router.query,
           date: selectedDate.format("YYYY-MM-DD"),
+          view: selectedView,
         },
       },
       undefined,
-      { shallow: true, scroll: false },
+      { shallow: true, scroll: false }
     );
-  }, [selectedDate, isDateInitialized]);
+  }, [selectedDate, selectedView, isInitialized]);
 
-  if (!isDateInitialized) return null;
+  if (!isInitialized) return null;
 
   return (
     <>

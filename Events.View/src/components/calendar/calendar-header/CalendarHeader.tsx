@@ -16,7 +16,7 @@ interface HeaderProps {
   selectedDate: Dayjs;
   setSelectedDate: Dispatch<SetStateAction<Dayjs>>;
   selectedView: string;
-  setSelectedView: Dispatch<SetStateAction<string>>;
+  setSelectedView: Dispatch<SetStateAction<CalendarViewType>>;
 }
 
 const CalendarHeader: React.FC<HeaderProps> = ({
@@ -88,7 +88,7 @@ const CalendarHeader: React.FC<HeaderProps> = ({
 
       <div className="flex items-center space-x-4">
         <Select
-          onValueChange={(value) => setSelectedView(value)}
+          onValueChange={(value) => setSelectedView(value as CalendarViewType)}
           defaultValue={selectedView}
         >
           <SelectTrigger
