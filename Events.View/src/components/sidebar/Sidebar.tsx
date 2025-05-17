@@ -7,7 +7,8 @@ const Sidebar: React.FC = () => {
     <div>
       <aside
         className={cn(
-          "hidden w-92 border-t px-2 py-3 transition-all duration-300 ease-in-out lg:block",
+          `hidden w-92 border-t px-2 py-3 transition-all duration-300
+          ease-in-out lg:block`,
         )}
       ></aside>
       <Create />

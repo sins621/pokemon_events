@@ -11,7 +11,10 @@ const MonthView: React.FC<MonthViewProps> = (props) => {
 
   return (
     <>
-      <section className="grid grid-cols-7 grid-rows-5 divide-x divide-y divide-gray-300 lg:h-[100vh]">
+      <section
+        className="grid grid-cols-7 grid-rows-5 divide-x divide-y
+          divide-gray-300 lg:h-[100vh]"
+      >
         {daysOfMonth.map((row, i) => (
           <Fragment key={i}>
             {row.map((day, j) => (

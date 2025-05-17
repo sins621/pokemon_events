@@ -34,7 +34,8 @@ const MonthViewBox: React.FC<MonthViewBoxProps> = ({ day, rowIndex }) => {
           className={cn(
             "text-center text-sm",
             isToday &&
-              "flex h-8 w-8 items-center justify-center rounded-full bg-accent text-white",
+              `bg-custom-mint flex h-8 w-8 items-center justify-center
+              rounded-full text-white`,
           )}
         >
           {isFirstDayOfMonth ? day.format("MMM D") : day.format("D")}

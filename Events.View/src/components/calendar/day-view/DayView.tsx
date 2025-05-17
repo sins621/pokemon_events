@@ -25,13 +25,13 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
       <div className="grid grid-cols-[auto_auto_1fr] px-4">
         <div className="w-16 border-r border-gray-300 text-xs">GMT +2</div>
         <div className="flex w-16 flex-col items-center">
-          <div className={cn("text-xs", isToday && "text-accent")}>
+          <div className={cn("text-xs", isToday && "text-custom-mint")}>
             {selectedDate.format("ddd")}
           </div>
           <div
             className={cn(
               "h-12 w-12 rounded-full p-2 text-2xl",
-              isToday && "bg-accent text-white",
+              isToday && "bg-custom-mint text-white",
             )}
           >
             {selectedDate.format("DD")}
@@ -41,7 +41,6 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
 
       <ScrollArea className="h-[70vh]">
         <div className="grid grid-cols-[auto_1fr] p-4">
-          {/* Left Column: Time Labels */}
           <div className="w-16 border-r border-gray-300 pr-2">
             {getHours.map((hour, index) => (
               <div key={index} className="relative h-16">
@@ -52,12 +51,13 @@ const DayView: React.FC<DayViewProps> = ({ selectedDate }) => {
             ))}
           </div>
 
-          {/* Right Column: Time Slots */}
           <div className="relative">
             {getHours.map((_, i) => (
               <div
                 key={i}
-                className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-accent"
+                className="hover:bg-custom-mint relative flex h-16
+                  cursor-pointer flex-col items-center gap-y-2 border-b
+                  border-gray-300"
               />
             ))}
 

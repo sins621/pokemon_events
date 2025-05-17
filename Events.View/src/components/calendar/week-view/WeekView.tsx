@@ -22,7 +22,10 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
   return (
     <>
       {/* Header row with day names */}
-      <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] place-items-center px-4 py-2">
+      <div
+        className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr]
+          place-items-center px-4 py-2"
+      >
         <div className="w-16 border-r border-gray-300">
           <div className="relative h-16">
             <div className="absolute top-2 text-xs text-gray-600">GMT +2</div>
@@ -31,13 +34,13 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
         {weekDays.map(({ currentDate, today }, index) => (
           <div key={index} className="flex flex-col items-center">
-            <div className={cn("text-xs", today && "text-accent")}>
+            <div className={cn("text-xs", today && "text-custom-mint")}>
               {currentDate.format("ddd")}
             </div>
             <div
               className={cn(
                 "h-12 w-12 rounded-full p-2 text-2xl",
-                today && "bg-accent text-white",
+                today && "bg-custom-mint text-white",
               )}
             >
               {currentDate.format("DD")}
@@ -48,7 +51,10 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
 
       {/* Time grid */}
       <ScrollArea className="h-[70vh]">
-        <div className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] px-4 py-2">
+        <div
+          className="grid grid-cols-[auto_1fr_1fr_1fr_1fr_1fr_1fr_1fr] px-4
+            py-2"
+        >
           {/* Time column */}
           <div className="w-16 border-r border-gray-300">
             {getHours.map((hour, index) => (
@@ -66,7 +72,9 @@ const WeekView: React.FC<WeekViewProps> = ({ selectedDate }) => {
               {getHours.map((hour, i) => (
                 <div
                   key={i}
-                  className="relative flex h-16 cursor-pointer flex-col items-center gap-y-2 border-b border-gray-300 hover:bg-accent"
+                  className="hover:bg-custom-mint relative flex h-16
+                    cursor-pointer flex-col items-center gap-y-2 border-b
+                    border-gray-300"
                   onClick={() => {
                     // setDate(currentDate.hour(hour.hour()));
                     // openPopover();

@@ -91,7 +91,9 @@ const CalendarHeader: React.FC<HeaderProps> = ({
           onValueChange={(value) => setSelectedView(value)}
           defaultValue={selectedView}
         >
-          <SelectTrigger className="w-24 focus-visible:ring-0 focus-visible:ring-offset-0">
+          <SelectTrigger
+            className="w-24 focus-visible:ring-0 focus-visible:ring-offset-0"
+          >
             <SelectValue placeholder="View" />
           </SelectTrigger>
           <SelectContent>
