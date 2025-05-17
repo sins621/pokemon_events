@@ -50,7 +50,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Pokémon badge tokens */
   --color-brand-yellow: var(--brand-yellow);
   --color-brand-green: var(--brand-green);
   --color-brand-red: var(--brand-red);
@@ -66,13 +65,13 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0 0);
 
-  --primary: oklch(0.78 0.18 250);     /* Electric blue */
+  --primary: oklch(0.78 0.18 250);
   --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.9 0.2 85);      /* Pikachu yellow */
+  --secondary: oklch(0.9 0.2 85);
   --secondary-foreground: oklch(0.2 0.02 80);
 
-  --accent: oklch(0.97 0 0);           /* Soft gray-neutral */
+  --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
 
   --muted: oklch(0.95 0.01 260);
@@ -117,7 +116,7 @@
   --secondary: oklch(0.72 0.18 85);
   --secondary-foreground: oklch(1 0 0);
 
-  --accent: oklch(0.269 0 0);          /* Darker neutral accent */
+  --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
 
   --muted: oklch(0.3 0.01 260);
