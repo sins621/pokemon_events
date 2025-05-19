@@ -7,6 +7,7 @@ import CalendarHeader from "./calendar-header/CalendarHeader";
 import dayjs, { Dayjs } from "dayjs";
 import weekOfYear from "dayjs/plugin/weekOfYear";
 import { getMonth } from "@/lib/getTime";
+import { CalendarViewType } from "@/types/calendar"
 
 dayjs.extend(weekOfYear);
 
