@@ -59,7 +59,7 @@ const Calendar: React.FC = () => {
         selectedView={selectedView}
         setSelectedView={setSelectedView}
       />
-      <div className="flex">
+      <div className="select-none flex">
         <div className="w-full flex-1">
           {selectedView === "month" && (
             <MonthView daysOfMonth={twoDMonthArray} />

@@ -69,7 +69,7 @@ const CalendarHeader: React.FC<HeaderProps> = ({
           </Button>
         </div>
 
-        <Button variant="outline" onClick={resetToToday}>
+        <Button className="select-none" variant="outline" onClick={resetToToday}>
           Today
         </Button>
 
@@ -82,11 +82,11 @@ const CalendarHeader: React.FC<HeaderProps> = ({
             className="size-6 cursor-pointer font-bold"
             onClick={handleNext}
           />
-          <h1 className="hidden text-xl lg:block">{dateLabel}</h1>
+          <h1 className="hidden select-none text-xl lg:block">{dateLabel}</h1>
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex select-none items-center space-x-4">
         <Select
           onValueChange={(value) => setSelectedView(value as CalendarViewType)}
           defaultValue={selectedView}
