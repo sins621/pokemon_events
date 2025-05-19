@@ -1,0 +1,29 @@
+{
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    ".gitignore": true,
+    "next-env.d.ts": true,
+    "package-lock.json": true,
+    "README.md": true,
+    "postcss.config.mjs": true,
+    "**/.next": true,
+    ".prettierrc": true
+  }
+}
