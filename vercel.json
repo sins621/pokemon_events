@@ -1,8 +1,6 @@
 {
-  "projects": [
-    {
-      "src": "Events.View",
-      "use": "@vercel/next"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "rootDirectory": "Events.View"
 }
